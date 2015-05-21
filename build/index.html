@@ -1,38 +1,103 @@
-<!DOCTYPE html>
-<!--The goal for the first session was to make a
-html page utilizing css syle sheets. I have done that 
-on this, the first page of my game. In my style sheets 
-I have chosen copperplate as my preferred font for my h1, but 
-in case that isn't available I have chosen some back up fonts.
-I understand that if I want to I can assign different size, style and color
-attributes to different fonts on my page and that I can group
-those fonts together by assigning different catagory codes of h1, h2, body, p, etc.
-I understand now why people use images for the text instead
-of writing everything in html, because there aren't
-a ton of fonts that will show up in every browser. My question for this
-session is what are the benefits or drawbacks of making a webpage completely 
-out of links to pdfs you made on your computer vs. code written in html. 
-I think the short answer is, when you use html you get something that
-isn't static and can be changed over and over again, because when you make a page in html 
-you can change the attributes without having to put togther a new pdf or document 
-everytime you want to change something on the page. I have included images and links.-->
-
-<!--For my portfolio I have chosen to make a short choose your own adventure game involving 
-zombies as they are the subject of my thesis and an interest of mine. Everytime throughout the game you see the word zombie, click on the word
-for a link to a resource that I am using for my thesis writing.-->
-
+ <!DOCTYPE html>
 <html>
 
   <head>
     <link rel="stylesheet" href="style.css">
+     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="script.js"></script>
   </head>
 
-  <body><center>
-    <center><img src="https://media.licdn.com/mpr/mpr/p/3/005/05c/08e/36a9765.jpg" width=300 height=200 /></center>
-    <h2><a href="http://en.wikipedia.org/wiki/Zombie" STYLE="text-decoration: none"target="_blank"> <span style ="color:white;">Zombie</span></a>
-      Choose Your Own Adventure Game Starts Here !</h2>
-    <p><a href="http://plnkr.co/edit/5B3yG2?p=preview" STYLE="text-decoration: none"target="_blank"><span style ="color:white;">Click Here to Begin Your Adventure</span></p>
-  </center></body>
+  <body>
+    <center><h1>Zombie Research!</h1></center>
+    <p>Click the button below to see the frequency of the occurance of the words <span style ="color:red;">"National Safety"</span> 
+    in the U.S Congressional Record for the years following 9/11.
+    </p>
+      <button onclick="output()">2002</button>
+    <script>
+var query_params = { apikey: 'f6ab5f2e4f69444b9f2c0a44d9a5223d',
+                     phrase: 'national safety',
+                     per_page: '10',
+                     start_date: "20020101",
+                     end_date: "20021231",
+                     sort: 'date asc'
+                   };
+                   
+var endpoint = 'http://capitolwords.org/api/text.json';
+ 
+var options = {
+  data: query_params,
+  type: 'GET',
+  dataType: 'jsonp'      
+};
+
+document.querySelector('button').onclick = function() {
+  var request = jQuery.ajax(endpoint, options)
+    .done(showResponse);
+};
+
+</script>
+        <hr>
+        <div>
+           <pre id="output">
+                <!-- content will appear here -->
+            </pre>
+        </div>
+            <button onclick="output()">2003</button>
+    
+    <script>
+var query_params = { apikey: 'f6ab5f2e4f69444b9f2c0a44d9a5223d',
+                     phrase: 'national safety',
+                     per_page: '10',
+                     start_date: "20030101",
+                     end_date: "20031231",
+                     sort: 'date asc'
+                   };
+                   
+var endpoint = 'http://capitolwords.org/api/text.json';
+ 
+var options = {
+  data: query_params,
+  type: 'GET',
+  dataType: 'jsonp'      
+};
+
+document.querySelector('button').onclick = function() {
+  var request = jQuery.ajax(endpoint, options)
+    .done(showResponse);
+};
+
+</script>
+        <hr>
+        <div>
+           <pre id="output">
+                <!-- content will appear here -->
+            </pre>
+        </div>
+    
+  </body>
+  <p><span class="yearly"></span></p>
+<template id="yearly">
+     *Trying to figure out this template thing!
+  </template>
+  
+  <template id="checkYear">
+     Code Editors
+  </template>
+  <script>
+    var checkYear = document.querySelector('#checkYear');
+    var checkYearInsertionPoints = document.querySelectorAll('.checkYear');
+    
+    [].forEach.call(checkYearInsertionPoints, function(insertionPoint){
+      var checkYearClone = document.importNode(checkYear.content, true);
+      insertionPoint.appendChild(checkYearClone);
+    });
+    var doublecheck = document.querySelector('#yearly');
+    var doublecheckInsertionPoints = document.querySelectorAll('.yearly');
+    
+    [].forEach.call(doublecheckInsertionPoints, function(insertionPoint){
+      var doublecheckClone = document.importNode(doublecheck.content, true);
+      insertionPoint.appendChild(doublecheckClone);
+    });
+  </script>
 
 </html>
