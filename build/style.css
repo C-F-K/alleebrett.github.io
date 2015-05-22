@@ -1,3 +1,45 @@
+ .swiper-container {
+        width: 100%;
+        height: 500px;
+        /* Keeps 'Session' tab visible and slides hidden */
+        overflow: hidden;
+    }
+    .swiper-slide {
+        background: black;
+        /* Content is being displayed centrally */
+        -webkit-justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+    /* Makes next picture appear when sliding */
+.swiper-container-vertical > .swiper-wrapper {
+  -ms-flex-direction: column;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
+/* Adds 'page circle' at bottom of screen */
+.swiper-wp8-vertical {
+  -ms-touch-action: pan-x;
+  touch-action: pan-x;
+}
+/* 'Page circle' make-up */
+.swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  display: inline-block;
+  border-radius: 100%;
+  background: black;
+  opacity: 0.2;
+}
+/* 'Page circle' clickable */
+.swiper-pagination-clickable .swiper-pagination-bullet {
+  cursor: pointer;
+}
+/* Turns active circle blue */
+.swiper-pagination-bullet-active {
+  opacity: 1;
+  background: black;
+}
 /* Styles go here */
 li{
 	color: black;
@@ -19,12 +61,13 @@ p {
     color: white;
 }
 h2{
-    font: bold 30px copperplate, Bank Gothic, Arial, serif;
-    color: red;
+    font:bold 18px Arial, serif;
+    color: yellow;
 }
 h3 {
     font-family: "Verdana";
     color: white;
+    
 }
 h4 {
     font-family: "Verdana";

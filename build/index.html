@@ -1,103 +1,74 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
   <head>
-    <link rel="stylesheet" href="style.css">
-     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <!-- Sources -->
+    <link href="swiper.css" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet" />
+
+    <script src="https://code.angularjs.org/1.3.0/angular.js"></script>
+    <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+    
+    <script src="swiper.js"></script>
     <script src="script.js"></script>
   </head>
 
-  <body>
-    <center><h1>Zombie Research!</h1></center>
-    <p>Click the button below to see the frequency of the occurance of the words <span style ="color:red;">"National Safety"</span> 
-    in the U.S Congressional Record for the years following 9/11.
-    </p>
-      <button onclick="output()">2002</button>
-    <script>
-var query_params = { apikey: 'f6ab5f2e4f69444b9f2c0a44d9a5223d',
-                     phrase: 'national safety',
-                     per_page: '10',
-                     start_date: "20020101",
-                     end_date: "20021231",
-                     sort: 'date asc'
-                   };
-                   
-var endpoint = 'http://capitolwords.org/api/text.json';
- 
-var options = {
-  data: query_params,
-  type: 'GET',
-  dataType: 'jsonp'      
-};
+  <body ng-app="myApp">
+    <div ng-controller="TestCtrl">
 
-document.querySelector('button').onclick = function() {
-  var request = jQuery.ajax(endpoint, options)
-    .done(showResponse);
-};
-
-</script>
-        <hr>
-        <div>
-           <pre id="output">
-                <!-- content will appear here -->
-            </pre>
-        </div>
-            <button onclick="output()">2003</button>
+    <!-- Shows buttons at the top. Ng-click defines which slide they show 
+    when you click on them. -->
+    <nav class="Features35mm-Navigation">
+        <button ng-click="setSlickIndex(0)">Home</button>
+        <button ng-click="setSlickIndex(1)">Project Info</button>
+        <button ng-click="setSlickIndex(2)">1997</button>
+    </nav>
     
-    <script>
-var query_params = { apikey: 'f6ab5f2e4f69444b9f2c0a44d9a5223d',
-                     phrase: 'national safety',
-                     per_page: '10',
-                     start_date: "20030101",
-                     end_date: "20031231",
-                     sort: 'date asc'
-                   };
-                   
-var endpoint = 'http://capitolwords.org/api/text.json';
- 
-var options = {
-  data: query_params,
-  type: 'GET',
-  dataType: 'jsonp'      
-};
+		<section id="features">
+			
+			<div class="swiper-container" swiper-directive>
+				<div class="swiper-wrapper">
+				<!-- Shows content of each slide--> 
+            <div class="swiper-slide">
+					  <div class="swiper-slide">
+						  <img src="http://s29.postimg.org/epsjbjeaf/zombie_Research_Logo.png" alt="zombie logo" style="width:1800px;height:400px">
+					  </div>
+					</div>
+					
+				  		<div class="swiper-slide">
+				  		<p>In my thesis I explore a some of the ways that after 9/11 the US government cultivated and perpetuated 
+					  a national climate of fear and how that has lead zombies to huge popularity in America.
+					  I believe one of the methods used to cultivate this national climate of fear was leaders and
+					  legislators successfully changing the language used to talk about immigration. Before 9/11 the language
+					  used to talk about immigration described an America open to diversity and inclusion. Post-9/11 the
+					  language used to talk about immigration described an America needing to protect itself
+					  from anyone trying to enter the country legally or illegally as a possible security threat.
+					  <br><br>
+					  With this project I wanted to explore a possible connection between 
+					  key words recorded in the congressional record for specific years and the output of American zombie
+					  films for those same years.
+					  The key words I searched for are "immigration and safety" in any single recorded instance. 
+					  I have searched 5 years pre 9/11 and 5 years post 9/11.  
+					  <br><br>
+					  Click the year buttons at the top of the page to find out how many instances of the key words 
+					  were recorded for that year and how many American zombie films were released that same year.
+					  </p>
+					  
+					  
+					</div>
+						        
+				  	<div class="swiper-slide">
+				  		<a href="https://www.themoviedb.org/discover/movie?page=1&language=en&year=1997&primary_release_year=&sort_by=popularity.desc&vote_count.gte=0&with_genres=&with_keywords=zombies&media_type=movie" target="_blank">
+					    <h1>1997</h1>
+					  </div>
+						        
+				  </div>
+				</div>
+			</section>
+			
+			<!-- Shows 'pages' at the bottom -->
+     <div class="swiper-pagination"></div>
 
-document.querySelector('button').onclick = function() {
-  var request = jQuery.ajax(endpoint, options)
-    .done(showResponse);
-};
-
-</script>
-        <hr>
-        <div>
-           <pre id="output">
-                <!-- content will appear here -->
-            </pre>
-        </div>
-    
+    </div>
   </body>
-  <p><span class="yearly"></span></p>
-<template id="yearly">
-     *Trying to figure out this template thing!
-  </template>
-  
-  <template id="checkYear">
-     Code Editors
-  </template>
-  <script>
-    var checkYear = document.querySelector('#checkYear');
-    var checkYearInsertionPoints = document.querySelectorAll('.checkYear');
-    
-    [].forEach.call(checkYearInsertionPoints, function(insertionPoint){
-      var checkYearClone = document.importNode(checkYear.content, true);
-      insertionPoint.appendChild(checkYearClone);
-    });
-    var doublecheck = document.querySelector('#yearly');
-    var doublecheckInsertionPoints = document.querySelectorAll('.yearly');
-    
-    [].forEach.call(doublecheckInsertionPoints, function(insertionPoint){
-      var doublecheckClone = document.importNode(doublecheck.content, true);
-      insertionPoint.appendChild(doublecheckClone);
-    });
-  </script>
-
 </html>
